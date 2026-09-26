@@ -4,6 +4,10 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/auth");
+const productRoutes = require("./routes/products");
+const receiptRoutes = require("./routes/receipts");
+const deliveryRoutes = require("./routes/deliveries");
+const dashboardRoutes = require("./routes/dashboard");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -16,6 +20,10 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/receipts", receiptRoutes);
+app.use("/api/deliveries", deliveryRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 // Centralized error handler must be registered last.
 app.use(errorHandler);
